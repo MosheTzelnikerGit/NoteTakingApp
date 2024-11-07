@@ -1,19 +1,17 @@
+// src/features/notes/NotesList.tsx
+
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
 import NoteItem from './NoteItem';
+import { Note } from './NotesSlice';  // ייבוא של Note מהממשק
 
-const NotesList: React.FC = () => {
-  const notes = useSelector((state: RootState) => state.notes.notes);
-  const activeCategory = useSelector((state: RootState) => state.notes.activeCategory);
-  
-  const filteredNotes = activeCategory === 'all'
-    ? notes
-    : notes.filter(note => note.category === activeCategory);
+interface NotesListProps {
+  notes: Note[];  // הגדרת notes כ-array של Note
+}
 
+const NotesList: React.FC<NotesListProps> = ({ notes }) => {
   return (
-    <div>
-      {filteredNotes.map(note => (
+    <div className="notes-list">
+      {notes.map((note) => (
         <NoteItem key={note.id} note={note} />
       ))}
     </div>

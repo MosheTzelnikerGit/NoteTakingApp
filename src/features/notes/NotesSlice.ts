@@ -1,3 +1,5 @@
+// src/features/notes/NotesSlice.ts
+
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Note {
@@ -10,12 +12,18 @@ export interface Note {
 
 interface NotesState {
   notes: Note[];
-  activeCategory: 'all' | 'work' | 'personal' | 'shopping';
 }
 
 const initialState: NotesState = {
-  notes: [],
-  activeCategory: 'all',
+  notes: [
+    {
+      id: 1,
+      title: 'דוגמה לפתק',
+      content: 'זהו פתק לדוגמה.',
+      category: 'personal',
+      createdAt: new Date().toLocaleDateString(),
+    },
+  ],
 };
 
 const notesSlice = createSlice({
@@ -25,18 +33,14 @@ const notesSlice = createSlice({
     addNote: (state, action: PayloadAction<Note>) => {
       state.notes.push(action.payload);
     },
-    editNote: (state, action: PayloadAction<Note>) => {
-      const index = state.notes.findIndex(note => note.id === action.payload.id);
-      if (index !== -1) state.notes[index] = action.payload;
-    },
-    deleteNote: (state, action: PayloadAction<number>) => {
-      state.notes = state.notes.filter(note => note.id !== action.payload);
-    },
-    setActiveCategory: (state, action: PayloadAction<NotesState['activeCategory']>) => {
-      state.activeCategory = action.payload;
+    updateNote: (state, action: PayloadAction<Note>) => {
+      const index = state.notes.findIndex((note) => note.id === action.payload.id);
+      if (index !== -1) {
+        state.notes[index] = action.payload;
+      }
     },
   },
 });
 
-export const { addNote, editNote, deleteNote, setActiveCategory } = notesSlice.actions;
+export const { addNote, updateNote } = notesSlice.actions;
 export default notesSlice.reducer;

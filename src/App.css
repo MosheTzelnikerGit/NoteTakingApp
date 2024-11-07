@@ -1,0 +1,112 @@
+/* Reset בסיסי */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  flex-direction: column;
+}
+
+/* עיצוב כללי לאפליקציה */
+h1, h2, h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+textarea,
+select,
+button {
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #4cae4c;
+}
+
+/* עיצוב הכפתור לבטל */
+button.cancel {
+  background-color: #d9534f;
+}
+
+button.cancel:hover {
+  background-color: #c9302c;
+}
+
+/* עיצוב רשימת פתקים */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* עיצוב כרטיס של פתק */
+.note-item {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.note-item h2 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.note-item p {
+  margin: 10px 0;
+}
+
+.note-item small {
+  display: block;
+  color: #777;
+}
+
+/* עיצוב טופס התחברות */
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input {
+  width: 100%;
+}
+
+/* עיצוב טעינה */
+.loader {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #5cb85c;
+}

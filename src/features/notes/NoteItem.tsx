@@ -1,4 +1,7 @@
+// src/features/notes/NoteItem.tsx
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Note } from './NotesSlice';
 
 interface NoteItemProps {
@@ -7,11 +10,14 @@ interface NoteItemProps {
 
 const NoteItem: React.FC<NoteItemProps> = ({ note }) => {
   return (
-    <div>
-      <h2>{note.title}</h2>
+    <div className="note-item">
+      <h3>{note.title}</h3>
       <p>{note.content}</p>
-      <small>Category: {note.category}</small>
-      <small>Created At: {note.createdAt}</small>
+      <p><strong>Category:</strong> {note.category}</p>
+      <p><strong>Creation date:</strong> {note.createdAt}</p>
+      <Link to={`/notes/${note.id}`}>
+        <button>Edited</button>
+      </Link>
     </div>
   );
 };
